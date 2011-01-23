@@ -1,0 +1,23 @@
+
+          ######################################
+          #   Projet Biomorphes                #
+          #        Evolute Fractale v.1.0      #
+          #  Patrick Portal - Fabrice Antoine  #
+          ######################################
+
+- help/           contient l'aide en HTML
+- doc/            contient la Javadoc
+- src/            sources et images
+- bin/            exécutable par la commande fract.BiomorphLauncher depuis ce dossier
+- Jar/            contient le jar
+
+
+Informations additionnelles :
+- Le .jar est un peu moins au point que le programme dossier bin/ (pas de rendu réseau, ni d'éditeur d'équation).
+- Rendu réseau client et serveur seulement par la version système de fichier.
+- Bien vérifier que les script bash dans bin/ sont exécutables (pour les fonctionnalités avancées) utilisateurs UNIX
+- Lire toute la notice avant d'ouvrir le logiciel (ahah!)
+- ...
+
+Rendez-vous sur thêta.net/fract pour tout support,
+à bientôt !

@@ -1,0 +1,133 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Lancement le logiciel</title>
+</head>
+<body>
+
+	<h1>Configuration</h1>
+
+<a name="fichiers"></a>
+<h2>Fichiers de configurations</h2>
+<p>
+La configuration désigne les fichiers qui retiennent vos préférences et fichiers logiciels,
+cette page montre surtout à quoi ces fichiers correpondent et comment les manipuler.
+</p>
+<p>
+Il n'y a pas beaucoup de fichiers de configuration dans Evolute Fractal, seulement deux dont un
+très important :
+<ul>
+	<li>fichier <span class="important">config</span> en format texte et donc éditable à la main</li>
+	<li>fichier <span class="important">.distantRenderersList</span> qui retient les serveurs 
+	distants en format binaire (non éditable)</li>
+</ul>
+</p>
+
+<a name="config"></a>
+<h2>Fichier config et syntaxe</h2>
+<p>
+Ouvrez votre fichier config dans un éditeur de texte <i>(dans config en racine)</i>. Vous verrez que ce
+fichier est très compréhensible par un humain et surtout éditable ligne par ligne, ce qui peut être 
+pratique pour la copie de données etc...
+</p>
+<p>
+Le fichier est divisé en <span class="important">trois parties</span> qui sont désignées par
+les lignes
+</p>
+<div class="codeConsole">
+---------- Mémorisation coordonnées ----------<br />
+# lignes qui vont décrire une vue de fractal<br />
+...<br />
+---------- Dégradé de couleurs ----------<br />
+# lignes qui vont décrire une structure de dégradé de couleur<br />
+...<br />
+---------- Options du logiciel ----------<br />
+# options du logiciel<br />
+...
+</div>
+<p>
+Tous les mots, lignes, précédées par le caractère <span class="important"># sont les 
+commentaires</span> ils ne seront pas pris en compte durant la phase d'importation et directement
+éliminés.
+</p>
+<p>
+Si on enlève tous les commentaires et qu'on sait que les lignes précédement listées sont des 
+délimiteurs de types de données, il ne reste donc plus que les données qui ont une sémantique 
+particulière, elles sont décrites çi-dessous.
+</p>
+
+<a name="confVues"></a>
+<h3>Type de donnée des vues</h3>
+<p>
+Les vues ont une syntaxe du type (exemple) :
+</p>
+<div class="codeConsole">$>id=2 ~name="mandel_tourbillon02" -fract=Mandelbrot £ColorRamp=3 -mainColors{bg:-16777216;-1_&_-16777216-alt=OFF} #iter=900 €coord={scl:7.4264089866569426E-9-posX:0.44342237706613163-posY:-0.3753405117461789__initSize=1708x901} -_-extraFractArg={[2.0]}</div>
+<p>
+Cette syntaxe est souple en caractère à espace mais il n'est pas autorisé de sauter de ligne
+comme la lecture du fichier de configuration se fait ligne par ligne.<br />
+Dans cette ligne on remarque les éléments :
+</p>
+<ul>
+	<li><span class="important">>id=ENTIER</span> l'identifiant numérique du fractal</li>
+	<li><span class="important">~name="STRING"</span> le nom donné par l'utilisateur à la vue</li>
+	<li><span class="important">-fract=Mandelbrot</span> le fractal choisis <i>(parmis les fichier .class dans le dossier 
+		fract.algo pour plus de renseignement voir la partie plug-ins)</i></li>
+	<li><span class="important">£ColorRamp=ENTIER</span> le dégradé de couleur choisis par son identifiant (voir plus bas)</li>
+	<li><span class="important">-mainColors{bg:ENTIER;ENTIER_&#38;_ENTIER-alt=[OFF|ON]}</span> les couleurs respectivement 
+		du fond, alternatives avec le la valeur booléenne d'alternance si activée.</li>
+	<li><span class="important">#iter=900</span> le nombre d'itérations du fractal tout simplement.</li>
+	<li><span class="important">€coord={scl:DOUBLE-posX:DOUBLE-posY:DOUBLE</span> la position du point supérieur gauche du
+	fractale et son échelle</li>
+	<li><span class="important">__initSize=1708x901}</span> la taille originale de la composition (pour revenir exactement
+	au même cadrage de la compo)</li>
+	<li><span class="important">-_-extraFractArg={[2.0]}</span> les arguments extra du fractal, dépendent du fractal, infinis.</li>
+</ul>
+<p>
+Il vous suffit de respecter cette syntaxe pour que la ligne soit acceptée.
+</p>
+
+
+<a name="confCol"></a>
+<h3>Type de donnée des couleurs</h3>
+<p>
+Les dégradés de couleurs ont une syntaxe du type (exemple) :
+</p>
+<div class="codeConsole">->id=2 ~name="Example1" *madeFor=0 £color={[-1, 100.0, 50.0][-8969458, 2.3809524, 50.0][-5722847, 44.49405, 50.0][-6319163, 0.0, 50.0][-7800966, 78.422615, 50.0]}</div>
+<p>
+Le nombre d'espace est subjectif, on note les éléments :
+<ul>
+	<li><span class="important">->id=ENTIER</span> l'identifiant du dégradé qui est nécessaire 
+		pour être choisis dans une vue.</li>
+	<li><span class="important">~name="Example1"</span> le nom donné au dégradé...</li>
+	<li><span class="important">*madeFor=ENTIER</span> avec l'identitifiant d'une vue <i>(facultatif)</i> pour que 
+	certains fractales puissent être de préférence lister pour une vue précise.</li>
+	<li><span class="important">£color={[ENTIER, DOUBLE, DOUBLE]...[ENTIER, DOUBLE, DOUBLE]}</span>
+	les couleurs avec pour objet entre crochet respectivement la couleur (rgb), la position dans le dégradé
+	et son poid. Le nombre de couleur peut être infini.</li>
+</ul>
+</p>
+
+<a name="confOpt"></a>
+<h3>Type de donnée des options</h3>
+<p>
+Certainement les données les plus simples, il y a trois types de données d'otion :
+</p>
+<ul>
+	<li><span class="important">Booléen</span>, il faut entrer un <span class="important">on</span> 
+	ou <span class="important">off</span></li>
+	<li><span class="important">Entier</span>, il faut entrer une valeur entière négative ou 
+	positif, dépend de l'option</li>
+	<li><span class="important">String</span>, il faut entrer entre guillements américaines "" une chaîne</li>
+</ul>
+<p>
+Dans tous les cas il suffit de respecter la syntaxe du fichier d'origine.
+</p>
+
+
+<a name="confRender"></a>
+<h2>Configuration réseau (.distantRenderersList)</h2>
+<p>
+Ce fichier binaire contient la liste des connexions à distance enregistrée. Par sécurité, les mots
+de passe de sont pas enregistrés.
+</p>

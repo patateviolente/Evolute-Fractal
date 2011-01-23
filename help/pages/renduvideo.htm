@@ -1,0 +1,100 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Rendu vidéo (par suite d'images)</title>
+</head>
+<body>
+
+<h1>Rendu par suite d'images</h1>
+
+<a name="present"></a>
+<h2>Présentation</h2>
+Le rendu en suite d'image est une possibilitée pratique pour observer l'évolution des fractales
+sous plusieurs angles. Concrètement, il vous est possible d'animer :
+<ul>
+	<li>Les coordonnées (X, Y, échelle)</li>
+	<li>Le nombre d'itération</li>
+	<li>2 variables maximum additionelle au fractal</li>
+</ul>
+d'un point A vers un point B linéairement.
+<p>
+	Les possibilités sont restreintes à ceci, il n'est pas possible d'ajouter d'autres images clés,
+	ni d'avoir un éditeur de trajectoire etc...
+</p>
+<p>
+	Exemple d'utilisation : Animer l'itération d'un fractal de 10 à 50 avec un pas de 5 est possible
+	avec un mouvement. Ou bien modifier la constante d'un Biomorphe de 0.2 à 0.5 avec un pas de 
+	0.004...
+</p>
+
+<a name="config"></a>
+<h2>Configuration</h2>
+	<h3>Paramètres d'entrée sortie</h3>
+	<img src="../images/interface/macro_index.png" alt="Panneau de macro" style="float:right" />
+	Le récapitulatif des paramètres est dans le panneau de macro (<span class="typewriter">
+	Affichage/ Éditeur de macro</span>) il décrit ce qui va être animé mais avant chaque rendu
+	il vaut mieux définir les quatre point important suivant :
+	<ul>
+		<li>
+			<span class="important">Bien définir la position</span>. Pour celà il suffit de faire un clic droit dans l'un des 
+			trois champs de coordonnée du panneau de navigation :<br />
+			<img src="../images/interface/menuC_coord.png" alt="clic droit dans champs de coordonée" /><br />
+			Le point d'entrée représente la position de la première image, et le point de sortie de 
+			la dernière image. Le pas sera constant suivant le nombre d'images.<br />
+			Pour que le fractal ne bouge pas, il faut faire aller deux fois dans ce menu et choisir 
+			le point d'entrée et de sortie.
+		</li>
+		<li>
+			<span class="important">Bien définir le nombre d'itération</span>. 
+			Vous devez afficher la barre d'outils d'itération et faire un clic droit pour 
+			définir le point d'entrée et de sortie :<br />
+			<img src="../images/interface/menuC_iteration.png" alt="clic droit dans champs de coordonée" />
+		</li>
+		<li>
+			<span class="important">Bien définir les variables additionelle</span>. 
+			Si vous utilisez des variables additionelle (par exemple la partie réelle et imaginaire 
+			de la constante de Julia) il faut les définir come étant les variables 1 et 2
+			puis définir leur point d'entrée :<br />
+			<img src="../images/interface/menuC_variable.png" alt="clic droit dans champs de coordonée" />
+			Ces paramètres sont possibles uniquement sur des champs de texte mais techniquement il est 
+			possible de définir n'importe quel champ manuelement dans le fichier config.<br />
+			<span class="important">Attention ! Si une variable est non utilisée, allez dans le panneau de 
+			configuration macro	et désactivez la variables avec le bouton correspondant.</span>
+		</li>
+	</ul>
+
+
+	<a name="mainVar"></a>
+	<h3>Pas et variable principale</h3>
+	<img src="../images/interface/admin_004.png" style="float:right" alt="admin macro" />
+		
+	<p>
+		Il faut maintenant définir quelle variable va définir le nombre d'image. Pourquoi ce système ?
+		Génarelement en faisant un rendu l'utilisteur se fixe un objectif sur une variable qui devra 
+		parcourir tel intervalle suivant tel pas. C'est le cas ici et le nombre d'image n'en n'est qu'une
+		résultante.
+	</p>
+	<p>
+		Ouvrez le panneau d'administration : 
+		vous devez définir la variable principale : celle sur laquelle vous fixerez un pas. 
+		Donnez ensuite le pas. Pa r exemple pour faire un rendu de Mandelbrot d'animant de 0 à 20
+		avec un pas de 2 choisissez l'itération en variable principale et entrez 2 dans le pas.
+	</p>
+	<p>
+		<span class="important">A chaques modification, le panneau de récapitulatif de la macro est 
+		mis à jour</span> avec le nombre d'images etc...
+	</p>
+
+<a name="rendu"></a>
+<h2>Lancement du rendu</h2>
+Le bouton de lancement du rendu se trouve sur la panneau principale de la macro (Lancer rendu !)<br />
+Il est ensuite facile de :
+<ul>
+	<li>Suspendre le rendu</li>
+	<li>Arrêter définitivement le rendu</li>
+</ul>
+A noter que <span class="important">l'arrêt ou la suspention n'est vérifié qu'à chaque fin 
+de calcul d'une image</span>.<br />
+La suite d'image se retrouve dans le dossier racine du programme, il n'est pas possible 
+de le définir (dommage...), les images portent le préfixe donné dans le option, par défaut image.

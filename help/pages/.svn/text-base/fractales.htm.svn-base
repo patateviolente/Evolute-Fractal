@@ -1,0 +1,247 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Compréhension des fractales</title>
+    
+    <script language="JavaScript" src="tigra_hints.js"></script>
+</head>
+<body>
+
+<!-- at the beginning of the document's body configure and initialize the hint object -->
+<script language="JavaScript">
+
+// configuration variable for the hint object, these setting will be shared among all hints created by this object
+var HINTS_CFG = {
+	'wise'       : true, // don't go off screen, don't overlap the object in the document
+	'margin'     : 10, // minimum allowed distance between the hint and the window edge (negative values accepted)
+	'gap'        : -7, // minimum allowed distance between the hint and the origin (negative values accepted)
+	'align'      : 'brtl', // align of the hint and the origin (by first letters origin's top|middle|bottom left|center|right to hint's top|middle|bottom left|center|right)
+	'css'        : '', // a style class name for all hints, applied to DIV element (see style section in the header of the document)
+	'show_delay' : 200, // a delay between initiating event (mouseover for example) and hint appearing
+	'hide_delay' : 500, // a delay between closing event (mouseout for example) and hint disappearing
+	'follow'     : false, // hint follows the mouse as it moves
+	'z-index'    : 100, // a z-index for all hint layers
+	'IEfix'      : false, // fix IE problem with windowed controls visible through hints (activate if select boxes are visible through the hints)
+	'IEtrans'    : ['blendTrans(DURATION=.3)'], // [show transition, hide transition] - transition effects, only work in IE5+
+	'opacity'    : 90 // opacity of the hint in %%
+};
+// text/HTML of the hints
+var HINTS_ITEMS = [
+	wrap2('<img src="../images/fractales/julia_set/julia0.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia1.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia2.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia3.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia4.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia5.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia6.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia7.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia8.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia9.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia10.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia11.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia12.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia13.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia14.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia15.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia16.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia17.png"'),
+	wrap2('<img src="../images/fractales/julia_set/julia18.png"'),
+];
+
+// this custom function receives what's unique about individual hint and wraps it in the HTML template
+function wrap (s_text, s_icon) {
+	return '<table cellpadding="0" cellspacing="0" border="0"><tr><td rowspan="2"><img src="' + s_icon + '"></td><td colspan="2"><img src="img/pixel.gif" width="1" height="15"></td></tr><tr><td background="img/2.gif" height="28" nowrap>' + s_text + '</td><td><img src="img/4.gif"></td></tr></table>';
+}
+// multiple templates/functions can be used in the same page
+function wrap2 (s_text) {
+	return [
+		'<table class="tablejs">',
+		'<tr><td class="tdjs">', s_text ,'</td></tr>',
+		'</table>'
+	].join('');
+}
+
+var myHint = new THints (HINTS_ITEMS, HINTS_CFG);
+</script>
+
+
+<h1>Compréhension des fractales</h1>
+<a name="present"></a>
+<h2>Présentation générale</h2>
+	<p>
+		Les fractales désignent une forme très irrégulière liée à son échelle, terme déposé récemment
+		mais dont l'existance date déjà d'un peu plus longtemps.
+	</p>
+	<p>
+		Avant l'informatique, calculer un fractale était presque de l'ordre de l'impossible puisqu'il faut
+		exécuter des milliers de calculs pour seulement quelques points, mais de nombreuse trouvailles
+		géométriques ont pu faire le jour, entre autres le triangle de de  ...
+	</p>
+	
+	<a name="iter"></a>
+	<h2>Nombre d'itérations</h2>
+	<p>
+		Seules les fractales par itérations nous intéresse, c'est le plus paramètre :<br />
+		Un calcul est lancé (avec initialisation) plusieurs fois de suite jusqu'à temps 
+		qu'il respecte une condition. Si cette condition n'a jamais été respectée alors il n'y a pas de point.
+		En revanche si la condition a été respecté à un moment on retient le nombre de fois qu'il a 
+		été nécessaire de renouveler la boucle.
+	</p>
+	<p>
+		Ce nombre est le résultat qui nous intéresse, on va le faire correspondre à une couleur précise. On va
+		essayer de donner à tous des couleurs différentes.
+		On remarque que si le nombre d'itération augmente, alors certaines infractuosités se créent, et plus
+		ce chiffre est grand, plus il est important d'augmenter l'échelle afin de découvrir des
+		formes totalement improbables selon les fractal, voici une illustration du nombre d'itérations sur
+		les fractal de Mandelbrot :
+<p>
+<table>
+		    <tr>
+		        <td align=center><img src="../images/fractales/iter02.png" alt="2 itérations" /></td>
+		        <td align=center><img src="../images/fractales/iter04.png" alt="4 itérations" /></td>
+		        <td align=center><img src="../images/fractales/iter06.png" alt="6 itérations" /></td>
+		    </tr>
+		    <tr>
+		        <td align=center>2 itérations</td>
+		        <td align=center>4 itérations</td>
+		        <td align=center>6 itérations</td>
+		    </tr>
+		    <tr>
+		        <td align=center><img src="../images/fractales/iter08.png" alt="8 itérations" /></td>
+		        <td align=center><img src="../images/fractales/iter14.png" alt="14 itérations" /></td>
+		        <td align=center><img src="../images/fractales/iter70.png" alt="70 itérations" /></td>
+		    </tr>
+		    <tr>
+		        <td align=center>8 itérations</td>
+		        <td align=center>14 itérations</td>
+		        <td align=center>70 itérations</td>
+		    </tr>
+</table>
+	</p>
+	<p>
+		Un fractal est très généralement répétitif mais c'est tout à fait subjectif quand on découvre certaines
+		formes qui n'ont qu'un chaos en commun.
+	</p>
+	
+	
+	<a name="biomorphes"></a>
+	<h2>Biomorphes</h2>
+	<p>Les biomorphes sont des fractales mais d'une façon un peu plus restreinte puisque généralement on les obtient 
+	par un traitement récursif du point z dans le plan (mais toujours itératif).</p>
+	<p>
+		Voici un exemple de fractal avec pour équation z = z² + sin(z)<br />
+		<img src="../images/fractales/exemple_biomorphe.png" /><br />
+		Il n'y a pas de définition stricte du mot biomorphe mais on voit que de façon réccursive
+		on obtient des figures plus dépouillée et plus représentatives, une sorte de sous-ensemble des fractales
+		qu'on désignera comme étant les biomorphes.
+	</p>
+	
+	
+	<a name="julia"></a>
+<h2>Julia Sets</h2>
+	<p>
+    Le plus connus et le plus basique des fractales est le fameux Julia sets, découvert par un matématicien Français 
+    Gaston Julia pendant la première guerre modiale. 
+    Julia sets ont été créer par un simple formule avec un parametre complexe C. 
+    En variant ce parametre C on peut obtenir plusieurs variations. Voici quelques exemples:
+    <p>
+    <table>
+      <tr>
+		        <td align=center><img src="../images/fractales/julia01.png" WIDTH=242 HEIGHT=180 alt="julia 1" /></td>
+		        <td align=center><img src="../images/fractales/julia02.png" WIDTH=242 HEIGHT=180 alt="julia 2" /></td>
+		        <td align=center><img src="../images/fractales/julia03.png" WIDTH=242 HEIGHT=180 alt="julia 3" /></td>
+      </tr>
+		    <tr>
+		        <td align=center>C = -0.2 + 0.75i</td>
+		        <td align=center>C = -1.3625 + -0.03125i</td>
+		        <td align=center>C = 0.321875 + -0.0328125i</td>
+		    </tr>
+    </table>
+<p>
+<center><em>(Placer la souris sur le mandelbrot pour voir quelques julia set):</em></center>
+<table class="tableimg" background="../images/fractales/julia_set/mandel.png" >
+    <tr>
+    	<td class="tdimg"></td>
+		<td class="tdimg"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg"></td>
+      <td class="tdimg"  onMouseOver="myHint.show(6, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg"></td>
+    </tr>
+     <tr>
+    	<td class="tdimg"></td>
+		<td class="tdimg"></td>
+       <td class="tdimg" onMouseOver="myHint.show(4, this)" onMouseOut="myHint.hide()"></td>
+       <td class="tdimg" onMouseOver="myHint.show(5, this)" onMouseOut="myHint.hide()"></td>
+       <td  class="tdimg"></td>
+       <td class="tdimg" onMouseOver="myHint.show(7, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+    </tr>
+        <tr>
+    	<td class="tdimg" onMouseOver="myHint.show(1, this)" onMouseOut="myHint.hide()"></td>
+		<td class="tdimg" onMouseOver="myHint.show(2, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg" onMouseOver="myHint.show(3, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg" onMouseOver="myHint.show(8, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+    </tr>
+        <tr>
+    	<td class="tdimg"></td>
+		<td class="tdimg" onMouseOver="myHint.show(14, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg" onMouseOver="myHint.show(14, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg" onMouseOver="myHint.show(15, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg" onMouseOver="myHint.show(17, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+    </tr>
+<tr>
+    	<td class="tdimg"></td>
+		<td class="tdimg"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg"></td>
+    <td class="tdimg" onMouseOver="myHint.show(16, this)" onMouseOut="myHint.hide()"></td>
+        <td class="tdimg"></td>
+        <td class="tdimg"></td>
+  </tr>
+    </table>
+    <br>
+    Un Mandelbrot est générer à partir de la fonction complexe Zn:<br>
+    Zn+1 = Zn^(p) + C ; avec p >= 2 et C = 0
+    <br><br>
+    Tandis que Julia est de la même forme que le mandelbrot  ; avec C = constante complexe.
+    <br>
+    Pour mieux comprendre la forme algorithmique nous vous invitons à voir l'algo suivant:
+    <br><br><br>
+    <table cellpadding="0" cellspacing="0">
+    	<tr>
+        	<td class="thcomplex"><strong>Mandelbro</strong>t</td>
+            <td class="thcomplex"><strong>Julia</strong></td>
+        </tr>
+        <tr>
+        	<td class="code">
+            <strong>init:</strong><br>
+            &nbsp;&nbsp;Z = (<font color="blue">0</font>, <font color="blue">0i</font>);<br>
+            <strong>itération:</strong><br>
+            &nbsp;&nbsp;Z = Z^(<font color="blue">p</font>) + <font color="green">pixel</font>;<br>
+            <strong>break:</strong><br>
+            &nbsp;&nbsp;|Z| <= <font color="blue">4</font>;<br><br>
+            ---------------<br>
+            <em>pixel = (x, iy);<br>
+            p >= <font color="blue">2</font>;</em>
+          </td>
+		  <td class="code">
+            <strong>init:</strong><br>
+            &nbsp;&nbsp;Z = <font color="green">pixel</font>;<br>
+            <strong>itération:</strong><br>
+            &nbsp;&nbsp;Z = Z^(<font color="blue">p</font>) + <font color="blue">C</font>;<br>
+            <strong>break:</strong><br>
+            &nbsp;&nbsp;|Z| <= <font color="blue">4</font>;<br><br>
+			---------------<br>
+            <em>C = cste complexe;<br>
+            p >= <font color="blue">2</font>;</em>
+            </td>
+		</tr>
+	</table>

@@ -1,0 +1,70 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Administration</title>
+</head>
+<body>
+
+<h1>Administration</h1>
+Les tâches administratives sont celles des réglages et de la gestion des options.
+
+<a name="pan"></a>
+<h2>Panneau d'administration</h2>
+Le panneau d'administration permet de modifier les options permanentes du logiciel. On distingue
+deux types d'options :
+<ul>
+	<li>
+		Option permanentes : celles dans le fichier config, elles seront toujours les mêmes
+		à chaques lancement du logiciel.
+	</li>
+	<li>
+		Option temporaires : celles chargées en mémoire vive, si celles ci sont modifiées
+		ce sera juste jusqu'à la fermeture du logiciel.
+	</li>
+</ul>
+<p>
+	L'administration modifie donc les options pour chaques démarages contrairement aux options dans
+	le menu qui sont généralement temporaires. Pour y accéder, aller dans 
+	<span class="typewriter">Edition/ préférence (CTRL+P)</span>
+</p>
+<table border="0">
+	<tr>
+		<td><img src="../images/interface/admin_001.png" /></td>
+		<td><img src="../images/interface/admin_002.png" /></td>
+		<td><img src="../images/interface/admin_003.png" /></td>
+	</tr>
+	<tr>
+		<td>Panneau d'option générales (spécificités fenêtre, fractal/ couleurs par défaut, langues...)</td>
+		<td>Panneau d'affichage : pour règler la visibilité de chaque éléments de l'interface.</td>
+		<td>Panneau de rendu : Paramétrages du moteur du rendu.</td>
+	</tr>
+</table>
+
+<table border="0">
+	<tr>
+		<td><img src="../images/interface/admin_004.png" /></td>
+		<td><img src="../images/interface/admin_005.png" /></td>
+	</tr>
+	<tr>
+		<td>Panneau de macro : Règlages supplémentaires d'une macro.</td>
+		<td>Liste d'option : Panneau contenant toutes les options (options macro filtrés pour plus de visibilité), se rapproche plus duf ichier config.</td>
+	</tr>
+</table>
+<p>
+	Pour modifier une option : pas besoin d'activer un enregistrement, elles sont immédiatement 
+	écrites dans le fichie config.
+</p>
+
+<a name="gestion"></a>
+<h2>Gestion des vues et couleurs</h2>
+<p>
+	Il est facile d'enregistrer des vues et couleurs via l'interface. Malheureusement <span class="important">il n'existe pas
+	encore d'intérface graphique pour supprimer ces éléments</span>.
+</p>
+<p>
+	Pour les supprimer, il vous suffit de modifier les bonnes lignes dans le fichier config, 
+	généralement reconnaîssables par leur nom. Pour plus de renseignements sur la syntaxe
+	du fichier de configuration, se reporter sur la <a href="config.htm#config" target="contenu">
+	section concernée</a>.
+</p>

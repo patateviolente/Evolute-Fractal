@@ -1,0 +1,489 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Equations</title>
+</head>
+<body>
+
+<h1>Editeur d'équation et plug-ins</h1>
+<p>Attention, cet utilitaire est réservé pour les système UNIX et sans l'utilisation d'une 
+archive JAR (ajout de fichiers).<br />
+L'éditeur d'équation permet de générer un fichier .class depuis un preset et donc en
+ajoutant quelques lignes de codes (voir Javadoc)</p>
+
+<a name="inter"></a>
+<h2>Interface graphique et compilation</h2>
+Pour ouvrir l'éditeur par interface graphique, accédez y depuis le panneau d'équation en cliquant
+sur le bouton <span class="important">new</span>. Depuis ce panneau il est possible
+d'avoir les preset de la classe Mandelbrot et BiomorpheSimple pour ne pas être perdu.<br />
+<i>Exemple : ajout d'un sinus à mandelbrot :</i><br />
+<img src="../images/interface/editeurequation.png" alt="éditeur d'équation" /><br />
+Il vous suffit :<br />
+<ul>
+	<li>D'ajouter des lignes de calcul (voir Javadoc)</li>
+	<li>De donner un nom au fichier</li>
+	<li>De lancer la <span class="important">compilaton (UNIX uniquement)</span></li>
+</ul>
+<p>
+	Le class compilée devrait se retrouver dans le dossier bin/fract/ et le nom de la classe
+	ajouté à la liste de sélection des fractal. Plus qu'à tester !
+</p>
+<p>
+	<span class="important">Avertissement</span> : cet outil est difficile de prise en main, 
+	si vous êtes programmeur, mieux vaut que vous utilisiez les sources du logiciel dans un IDE (Eclipse).
+</p>
+
+<a name="tools"></a>
+<h2>Outils pour les complexes</h2>
+
+	<a name="class"></a>
+	<h3>Plusieurs outils de complexes</h3>
+	<p>
+		Le logiciel intègre trois classes de complexes : 
+		ComplexeCartesien qui devait au départ hériter d'une classe BaseComplexe pour faire place aussi
+		aux ComplexePolaire (non terminé et de toutes façon inutilisable par le logiciel)...
+	</p>
+	Les trois classes sont : 
+	<ul>
+		<li>ComplexeCartesien</li>
+		<li>Cmplx</li>
+		<li>Complex</li>
+	</ul>
+	Elles sont donc toutes utilisables par une classe de calcul, leur documentation se trouve dans
+	la <span class="important">Javadoc du logiciel</span>, il serait inutile de répéter leur 
+	fonctionnalités, d'autant que ce passage concerne uniquement les programmeurs.
+
+
+	<a name="help"></a>
+	<h3>Aide supplémentaire globale</h3>
+	Cette aide décrit les différentes fonctions mathématiques possibles ainsi que les arguments
+	définis dans la plupart des classes de Complexe :<br />
+	<div style="height:400px; overflow:auto; margin-bottom:100px; border:1px solid grey;">
+		<p>Cette classe permet   de calculer les fonctions arithmétiques et  trigonométriques des nombres complexes (x + iy).</p>
+		<h3>Arithmétique</h3>
+		<ul>
+		  <li><strong>Addition (+, plus ())</strong></li>
+		</ul>
+		<table cellspacing="0" cellpadding="0" border="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type</strong></td>
+			<td class="thcomplex"><strong>Association</strong></td>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Binaire</td>
+			<td class="tdcomplex">gauche</td>
+			<td class="tdcomplex">int</td>
+			<td class="tdcomplex">int</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">float</td>
+			<td class="tdcomplex">float</td>
+		  </tr>
+		  <tr>
+			<td  class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td  class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction plus () additionne 2 complexes  entre les parties réelles et imaginaires.<br>
+		  La forme mathématique: (x + iy) + (x’ + iy’)= (x+x’, i  (y+y’)) <br>
+		  Avec: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="tdexemples">(x, y).plus (2, 3)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(2+x,    3+y)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).plus (3, -9)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(5,    -4)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Soustraction (-, minus())</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type</strong></td>
+			<td class="thcomplex"><strong>Association</strong></td>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Binaire</td>
+			<td class="tdcomplex">gauche</td>
+			<td class="tdcomplex">int</td>
+			<td class="tdcomplex">int</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">float</td>
+			<td class="tdcomplex">float</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction minus () soustrait 2 complexes.<br>
+		  La forme mathématique: (x + iy) - (x’+ iy’)= (x-x’, i (y-y’)) <br>
+		  Avec: x-&gt; partie réel et y-&gt; partie imaginaire<br>
+		  Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(x, y).minus (2, 3) </td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(2-x,    3-y)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).minus(3, -9)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(-3, 14)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Multiplication (*, times())</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type</strong></td>
+			<td class="thcomplex"><strong>Association</strong></td>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Binaire</td>
+			<td class="tdcomplex">gauche</td>
+			<td class="tdcomplex">int</td>
+			<td class="tdcomplex">int</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">float</td>
+			<td class="tdcomplex">float</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction times () multiplie 2 nombres complexes ou  multiplie un constant <em>alpha</em> à une  complexe.<br>
+		  La forme mathématique: <br>
+		  (x, iy) * (x’, iy’) =  (x*x’, i (y*y’)) <br>
+		  <em>α</em>  * (x, iy) = (<em>α</em>*x, <em>α</em>*y)</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(x, y).times (2, 3) </td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(2*x, 3*y)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).times(3, -9)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(6, -45)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(5, 3).times(2)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(10, 6)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Division (/, divides())</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type</strong></td>
+			<td class="thcomplex"><strong>Association</strong></td>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Binaire</td>
+			<td class="tdcomplex">gauche</td>
+			<td class="tdcomplex">int</td>
+			<td class="tdcomplex">int</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">float</td>
+			<td class="tdcomplex">float</td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">&nbsp;</td>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction divides () divise 2 complexes.<br>
+		  La forme mathématique: (x, iy) / (x’, iy’)= (x/x’, i (y/y’)) <br>
+		  Avec: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="155" class="tdexemples">(x, y).divides (2, 3) </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="380" class="tdexemples"><em>(x/2,    y/3)</em></td>
+		  </tr>
+		  <tr>
+			<td width="155" class="tdexemples">(2, 5).divides(3, -9)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="380" class="tdexemples"><em>(2/3,    -5/9)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Module (abs)</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction abs () calcule le module du nombre complexe.<br>
+		  La forme mathématique: racine(x² + y²). <br>
+		  Avec&nbsp;: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(x, y).abs () </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em>Sqrt    (x² + y²)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).abs ()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>Sqrt  (29)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Argument (phase())</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction phase () calcule le argument du nombre  complexe entre –Pi et Pi. Elle retourne l’angle <em>thêta </em> suite à une transformation de repère  cartésienne (x, y) en coordonnées polaire (r, <em>thêta</em>). <br>
+		  La forme mathématique: angle = atan² (arg). <br>
+		  Avec : arg = Sqrt (x + iy) * (x – iy) </p>
+		<p>Equivalent&nbsp;:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="614"><br>
+			  <div class="code"><strong>if </strong><font color="blue">real</font>(arg) &gt;    <font color="blue">0</font><br>
+				  &nbsp;<font color="blue">angle </font>= atan(<font color="blue">imag</font>(arg) / <font color="blue">real</font>(arg))<br>
+				  <strong>elseif </strong><font color="blue">real</font>(arg) == <font color="blue">0</font><br>
+				  <strong>&nbsp;if </strong><font color="blue">imag</font>(arg) &gt;    0<br>
+				  &nbsp;&nbsp;<font color="blue">angle </font>= <font color="blue">0.5</font>    * <font color="green">#pi</font><br>
+				  <strong>&nbsp;else</strong><br>
+				  &nbsp;&nbsp;<font color="blue">angle </font>= <font color="blue">-0.5</font> * <font color="green">#pi</font><br>
+				  <strong>&nbsp;endif</strong><br>
+				  <strong>else</strong><br>
+				  <strong>  if </strong><font color="blue">imag</font>(arg) &gt; <font color="blue">0</font><br>
+				  &nbsp;&nbsp;&nbsp;<font color="blue">angle </font>= <font color="green">#pi</font>    + <font color="blue">atan</font>(<font color="blue">imag</font>(arg)    / <font color="blue">real</font>(arg))<br>
+				  <strong>&nbsp;else</strong><br>
+				  &nbsp;&nbsp;&nbsp;<font color="blue">angle </font>= -<font color="green">#pi</font> + <font color="blue">atan</font>(<font color="blue">imag</font>(arg) / <font color="blue">real</font>(arg))<br>
+				  <strong>&nbsp;endif</strong><br>
+				  <strong>endif</strong></p>
+			  </div></td>
+		  </tr>
+		</table>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(1, 1).phase () </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em> (0.25 * p)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(5, 6).phase ()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>0.8760580505981934</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(-1, -1).phase ()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(0.75*    pi)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Conjugaison</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction conjugate () transforme la partie imaginaire  du nombre complexe en négatif.<br>
+		  La forme mathématique: (x + iy) = (x - iy). </p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(x, y).conjugate() </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em>(x²,    -y)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).conjugate()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(2,    -5)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Puissance</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction puissance calcule le complexe (partie réel et  imaginaire) en puissance n.<br>
+		  La forme mathématique: (x + iy)^n. <br>
+		  Avec&nbsp;: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="58" class="tdexemples">n=2</td>
+			<td width="142" class="tdexemples">(x, y).puissance(2)</td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em>(x²    - y², 2*x*y)</em></td>
+		  </tr>
+		  <tr>
+			<td width="58" class="tdexemples">n=2</td>
+			<td width="142" class="tdexemples">(2, 5).puissance(3)</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(-21,    20)</em></td>
+		  </tr>
+		</table>
+		<h3>Trigonométrique</h3>
+		<br><ul>
+		  <li><strong>Sinus</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction sin () calcule le sinus du nombre complexe.<br>
+		  La forme mathématique: sin (x + y) = cosh (y) * sin (x) +  sinh (y) * cos (x)<br>
+		  Avec&nbsp;: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(2, 0).sin () </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em>(0.9093, 0)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).sin ()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(67.478915,    -30.879431)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Cosinus</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction sin () calcule le sinus du nombre complexe.<br>
+		  La forme mathématique: cos (x + y) = cosh (y) * cos (x) -  sinh (y) * sin (x)<br>
+		  Avec&nbsp;: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(2, 0).cos () </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em>(-0.4161, 0)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).cos ()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(-30.879431,    -67.478915)</em></td>
+		  </tr>
+		</table>
+		<br><ul>
+		  <li><strong>Tangente</strong></li>
+		</ul>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td class="thcomplex"><strong>Type Entrée</strong></td>
+			<td class="thcomplex"><strong>Type Sortie</strong></td>
+		  </tr>
+		  <tr>
+			<td class="tdcomplex">Complexe</td>
+			<td class="tdcomplex">Complexe</td>
+		  </tr>
+		</table>
+		<p>Cette fonction sin () calcule le sinus du nombre complexe.<br>
+		  La forme mathématique: tan (x + y) = sin (x + y) / cos (x +  y) <br>
+		  Avec&nbsp;: x-&gt; partie réel et y-&gt; partie imaginaire</p>
+		<p>Equivalent&nbsp;:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="614" class="tdcomplex">(x, y).tan () = (x, y).sin ().divides ((x, y).cos ()) </td>
+		  </tr>
+		</table>
+		<p>Exemples:</p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="142" class="tdexemples">(2, 0).tan () </td>
+			<td width="25" class="tdexemples">; </td>
+			<td width="395" class="tdexemples"><em>(-2.1850, </em><em>0)</em></td>
+		  </tr>
+		  <tr>
+			<td width="142" class="tdexemples">(2, 5).tan ()</td>
+			<td width="25" class="tdexemples">;</td>
+			<td width="395" class="tdexemples"><em>(-6.872163,    1.000059)</em></td>
+		  </tr>
+		</table>
+	</div>

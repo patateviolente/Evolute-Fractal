@@ -1,0 +1,222 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Rendu par réseau</title>
+</head>
+<body>
+
+	<h1>Rendu réseau</h1>
+		<p>
+		Cette page va vous aider à faire fonctionner comme il faut l'utilitaire de rendu par réseau. Attention, 
+		ça ne sert à rien de continuer si votre machine n'est pas de type <span class="important">UNIX</span> ou 
+		ne dispose pas de serveur SSH <i>(script bash oblige...)</i>.
+		</p>
+		<p>
+		Cette limitation est due au fait que le choix de ce procédé s'est révélée extrêmement simple pour des
+		machines sur UNIX avec serveur ssh.
+		</p>
+
+	<a name="present"></a>
+	<h2>Présentation</h2>
+		<img src="../images/render/schema_networkrender_vectoriel.png" style="float:right;" />
+		<p>Un rendu réseau signifie que plusieurs machines vont être exploités afin d'accélerer le rendu sur
+		votre machine. Vous pourrez ainsi naviguer de façon beaucoup plus fluide avec plusieurs machines dans
+		les méandres d'un fractal à fortes itérations. Il y a beaucoup à dire sur ce procédé car il est 
+		<span class="important">expérimentale</span>, il marche néanmoins très bien d'après nos quelques tests mais
+		il se peut que l'interface soit un peu trop rustre pour se dispenser de l'aide.
+		</p>
+		<p>
+		Vos machines vont se dialoguer en ssh (flux sécurisés, depuis internet, votre réseau local), la 
+		configuration est donc : 
+		<ul>
+			<li>Un ordinateur maître, celui de l'utilisateur, qui va récupérer toutes les donnéeset les afficher.</li>
+			<li>Plusieurs autres ordinateurs distants ayant le moteur de rendu installé. Il vont exécuter 
+			l'algorithme avec certains arguments et répondre à l'ordinateur maître périodiquement 
+			leurs réponses.</li>
+		</ul>
+		</p>
+		<p>
+		L'utilité de cette aide est de vous aider à paramétrer vos machines (succintement) et d'utiliser
+		en conséquences l'interface graphique du moteur de rendu.
+		</p>
+
+
+	<a name="param"></a>
+	<h2>Paramétrer vos serveurs</h2>
+		<h3>Première connexion</h3>
+			<p>
+			L'avantage d'un système sur UNIX est qu'il a été parfaitement pensé pour être utilisé à distance en 
+			toute sécurité, c'est d'ailleurs pour celà que ce système est réservé aux utiliseurs UNIX, l'autre
+			étant que ce système est extrêmement simple et rapide à mettre en oeuvre.
+			</p>
+			<p>
+			Tous vos ordinateurs peuvent avoir un accès à distance, pour celà, il faut que le paquet 
+			<span class="important">openssh-server</span> soit installé sur chacunes des machines que vous allez
+			exploiter.
+			Si ce n'est pas fait il faut installer le paquet en root avec votre utilitaire de paquet préféré sur
+			un dépôt (officiel) de votre distribution.</p>
+			<div class="codeConsole">apt-get install openssh-server</div>
+
+			Ensuite pour accéder à votre machine à distance utiliser la commande ssh :
+			<div class="codeConsole">ssh -p 22 votrelogin@adresse_ip</div>
+			avec
+			<ul>
+				<li>votrelogin : votre nom d'utilisateur <i>(quelconque)</i> sur cette machine à distance</li>
+				<li>adresse_ip l'adresse ip <span class="important">locale ou distante</span> selon que vous 
+					soyez sur votre réseau local ou par internet.<br />
+					Pour obtenir votre adresse ip local, tappez la commande
+					<div class="codeConsole">ifconfig | grep "inet adr"</div>
+					Pour obtenir votre adresse ip externe, vous pouvez regarder sur 
+					<a href="http://monip.org/">monip.org</a> par exemple.
+				</li>
+			</ul>
+			<p>Il vous sera alors demandé une confirmation pour la première connexion "yes" puis votre
+			mot de passe et vous serez connecté à distance avec vos droits utilisateur (en console).
+			Il est possible de se dispenser d'un mot de passe par deux manières partie mettre vos machines
+			en confiance.</p>
+
+
+		<h3>Fichiers requis</h3>
+			<p>
+			Si votre machine est prête et accessible, très bien ! Maintenant il faut que le logiciel soit "installé",
+			ou pas vraiment puisqu'il vous suffit de copier la distribution par dossier, le .jar n'étant pas 
+			utilisable pour le rendu par réseau.
+			</p>
+			<p>
+			Pour copier des fichiers à distance par la console vous pouvez faire la commande</p>
+			<div class="codeConsole">scp -r EvoluteFractal/ identifiant@adress_ip:~/</div>
+			<p>
+			Le dossier sera alors copié dans le dossier personnel utilisateur en racine, vous pourrez l'utiliser
+			à un détail prêt :<br />
+			Le logiciel va rechercher automatiquement le dossier du programme avec une 
+			<span class="important">commande locate</span>. Le problème
+			de cette commande est qu'elle est rapide mais fonctionne sur une base de donnée des fichier mise 
+			rarement à jour. Si vous voulez que le logiciel trouve automatiquement le programme avec seulement
+			un identifiant et une adresse ip, alors vous pouvez mettre la base de donnée à jour avec la commande
+			(en root !) :
+			</p>
+			<div class="codeConsole">updatedb</div>
+			La commande sur le serveur :
+			<div class="codeConsole">locate bin/NetworkEngine.sh --limit 1</div>
+			<p>
+			devrait donner un résultat vers le chemin absolu de bin/NetworkEngine.sh
+			</p>
+			<p>
+			Votre serveur est prêt : vous avez copié le programme à distance.
+			</p>
+
+		<h3>Mettre en confiance vos machines</h3>
+			<p>
+			<b>Le logiciel vous permet de rentrer un mot de passe automatiquement via un 
+			<span class="important">script expect</span>, néanmoins ce système à l'inconvénient de ne fonctionner 
+			seulement si expect est installé.</b><br />
+			Pour le savoir, tapper</p>
+			<div class="codeConsole">type expect</div>
+			<p>Si la console vous répond "expect is /usr/bin/expect", vous n'êtes à priori pas obligé de suivre cette
+			étape.</p>
+			<p>
+			Néanmoins, cette étape pourrait vous éviter de ne pas avoir à retapper à chaques fois le mot de passe
+			que ce soit dans le logiciel ou pour vos session, le principe étant de copier une clé sur le serveur
+			autorisé.
+			</p>
+			<p>
+			Sur votre machine, générez une clé (rsa ou ssa) avec passphrase vide (pour justement profiter de
+			l'absence totale de mot de passe)
+			</p>
+			<div class="codeConsole">ssh-keygen -t rsa</div>
+			<p>
+			Puis copiez la clé sur le serveur, une commande existe exprès pour ça
+			</p>
+			<div class="codeConsole">ssh-copy-id -i ~/id_rsa.pub utilisateur@adresse_ip</div>
+			<p>
+			Normalement une connexion ssh à ce serveur devrait se faire en une ligne sans confirmation, 
+			le logiciel est prêt à utiliser le serveur en toute facilité et sécurité !
+			</p>
+
+
+	<a name="use"></a>
+	<h2>Configurer et utiliser</h2>
+		<h3>Formulaire d'ajout</h3>
+			<img src="../images/render/renderManager_select.png" style="float:right;" />
+			<p>
+				L'utilitaire de rendu réseau se trouve dans <span class="important">Affichage/ rendu réseau</span>.
+			</p>
+			<p>
+				La fenêtre qui s'ouvre <i>(cf à droite)</i> montre en premier la machine actuelle et son nombre
+				de thread par défaut au maximum, il faut une autre machine pour pouvoir distribuer des processus.<br />
+				La seule option disponible dans un premier temps est donc d'
+				<span class="important">ajouter une machine</span>.
+			</p>
+			<p>
+			Quand vous ajouter une machine, un formulaire demande
+			<ul>
+				<li><b>Un surnom</b> de la machine, pour vous aider à la différencier en lui donnant un nom et non 
+				seulement une adresse ip.</li>
+				<li><b>Le nom d'utilisateur</b> de la machine distante (vous devez bien sûr avoir le mot de passe
+				de ce compte qui vous sera demandé plus tard)</li>
+				<li><b>L'adresse ip</b> locale ou externe <i>(voir plus haut dans cette page pour la méthode 
+				d'obtention)</i></li>
+				<li>Le port : si jamais vous avez un routeur et que votre machine n'est accessible que sur une 
+				autre plage que le port par défaut de ssh (22).</li>
+				<li>La localisation du programme distant <i>(automatique si déjà référencé)</i> voir plus haut si 
+				jamais cette étape automatique ne marche pas (updatedb). Néanmoins cette option de recherche
+				est un bonus car il vous suffit du lien absolu vers le programme dans le dossier bin...</li>
+			</ul>
+			<div align="center">
+				<img src="../images/render/networkManager_new.png" />
+			</div>
+			<p>
+			Normalement si le nom d'utilisateur, l'adresse, le dossier bin du logiciel sont corrects alors
+			vous devrez obtenir un <span class="important">PONG</span> venant du logiciel java distant. Dans
+			le cas contraire, l'ajout de la machine distante sera refusée à cause d'un timeout.
+			</p>
+			<p>
+			En ce qui concerne le mot de passe : il ne vous sera jamais demandé si vous avez mis en confiance
+			vos deux machines en suivant l'étape de copie de la clé public de cryptage. Dans le cas contraire, 
+			vous devrez la rentrer pour obtenir les réponses et ensuite la rentrer une fois dans le champs 
+			adapté une fois la machine ajoutée <i>(voir plus haut encore, expect doit être installé !)</i>
+			</p>
+
+
+
+		<h3>Formulaire d'ajout</h3>
+			<p>
+			La machine ajoutée, la connexion est établie. 
+			Si votre mot de passe est demandé, entrez le dans le champ MDP, c'est 
+			le script expect qui le rentrera à votre place
+			</p>
+			<p>
+			Plus qu'à distribuer les tâches ! Pour les répartir, c'est très simple, bouger les sliders, le slider
+			principale est le maître, il faut que vous trouviez un bon compromis sachant que :
+			</p>
+			<ul>
+				<li>Le temps de réponse par un réseau est de l'ordre de quelques dizaines de millisecondes. Pour un
+				rendu sencé être rapide ça peut être vraiment beaucoup. Dans ce cas le rendu réseau sera vraiment
+				profitable uniquement pour un nombre très fort d'itérations.</li>
+				<li>Les machines multicoeurs ne seront exploités seulement si le nombre de threads est supérieur
+				au nombre de coeurs, n'hésitez pas à en ajouter via le panneau de gestion du moteur de rendu.</li>
+				<li>Les rendu réseaux sont ceux situés à gauche de l'écran et ceux calculés par la machine local
+				à droite donc</li>
+				<li>La machine maître doit être assez puissante pour ne pas ralentir les flux. Il se peut qu'une
+				mauvaise machine (un processeur à économie d'énergie à faible cadence) ne puisse même pas
+				retranscrire les flux de réponses de machine puissantes. Dans ce cas n'hésite pas à ne mettre
+				aucun calcul sur la machine maître</li>
+			</ul>
+
+			<p>
+			Sur ces conseils, c'est que le rendu réseau fonctionne, à vous de bien paramétrer pour un rendu
+			synchronisé.
+			</p>
+
+
+
+		<h3>Surveiller l'activitée</h3>
+			Vous pouvez vérifier l'activité système d'une machine à distancepar la commande
+			<div class="codeConsole">tload -d 1</div>
+			qui va vérifier toutes les secondes le taux de charge avec un graphique. Le taux de charge va de 0 
+			au nombre de processeur (multithread inclu), la liste des 3 taux est celui depuis 5mn, 10mn et 15mn
+			en moyenne.
+
+</body>
+</html>

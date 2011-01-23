@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Accueil</title>
+</head>
+
+<body>
+
+	<p>
+		<h1>Index</h1>
+		<h2>Bienvenue sur le manuel de Evolute Fractal</h2>
+		<div align="center">
+			<img src="../images/logo-evolute-fract.jpg" width="534" height="227" alt="logo" align="center">
+		</div>
+	<p>
+	Utilisez le menu latéral pour naviguer à travers les différentes sections du manuel.
+
+
+	<a name="present"></a>
+	<h2>Présentation du projet</h2>
+	<p>
+	Evolute Fractal est un projet sous <span class="important">license GNU</span> de seconde année de license réalisée 
+	en binôme sur quatre mois de réalisation début 2010.
+	</p>
+	<p>
+	Le projet devait à la base comporter de quoi observer des biomorphes dans un plan avec les transformations de
+	base et la colorisation. Le projet à finalement abouti un peu plus en proposant un système de plug-ins et un 
+	rendu par réseau et par suite d'images.
+	</p>
+	
+	<a name="fonctio"></a>
+	<h2>Fonctionnalités inclues</h2>
+	<p>
+	Evolute Fractal est un visualisateur de Fractale qui comme la plupart des logiciels 
+	fractales vous permet de :
+	</p>
+	<ul>
+		<li class="liExtend">Visualiser un fractal dans le plan, avec la souris.
+			<ul>
+				<li><span class="important">Déplacement</span>, changement 
+					d'<span class="important">échelle</span> avec sélection.</li>
+				<li><span class="important">Rotation</span> à n'importe quel endroit.</li>
+				<li>Minimap et <span class="important">interface facile</span> de prise en main</li>
+				<li>Editeur de dégradés de <span class="important">couleurs</span>.</li>
+			</ul>
+		</li>
+		<li class="liExtend">Moteur de rendu utilisant pleinement les ressources de votre machine.
+			<ul>
+				<li>Moteur de rendu à <span class="important">nombre de threads paramétrable</span></li>
+				<li>Plusieurs procédures de rendu possibles (horizontal, vertical, progressif)</li>
+			</ul>
+		</li>
+		<li class="liExtend">Exporter fractal, couleurs, et paramètres textuelement.
+			<ul>
+				<li>Gestionnaire d'enregistrement de fractal avec couleurs.</li>
+				<li>Possiblité de <span class="important">partager textuelement les fractal</span> sur le net, import et export.</li>
+				<li><span class="important">Export d'image</span> avec taille du panneau paramétrable (plein écran, taille manuelle)</li>
+			</ul>
+		</li>
+	</ul>
+	<p>
+	Mais Evolute Fractal vous donne aussi quelques autres possibilités un peu plus poussées (sans être au niveau
+	de certains logiciels fractals très élaborés) telle que : </p>
+	<ul>
+		<li class="liExtend">Un <span class="important">rendu multimachine</span> (systèmes UNIX seulement) sur une même vue.</li>
+		<li class="liExtend">Un système de <span class="important">plug-ins</span> pour ajouter d'autres fractales venant de
+		contributeurs au logiciel qui viennent s'ajouter à ceux par défaut du logiciel.</li>
+		<li class="liExtend">Un <span class="important">système d'animation</span> par deux images clés pour faire des 
+		rendu en suite d'image (vidéo).</li>
+		<li class="liExtend">Un éditeur d'équation (vraiment rustre) en plus de la possibilité 
+		d'éditer le code directement depuis les sources.</li>
+	</ul>
+	
+</body>
+</html>

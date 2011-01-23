@@ -1,0 +1,27 @@
+
+body{
+	font-family: 'Trebuchet MS', Tahoma, Verdana, 'Times New Roman', Times, serif;
+	font-size:12px;
+}
+
+a{
+	text-decoration:none;
+	font-size:11px;
+	display:block;
+	color:#134E83;
+}
+
+.nv1{
+	margin-left:3px;
+	margin-top:5px;
+	font-weight:bold;
+	font-size:13px;
+}
+.nv2{
+	margin-left:18px;
+	font-size:13px;
+}
+.nv3{
+	margin-left:30px;
+	font-weight:italic;
+}

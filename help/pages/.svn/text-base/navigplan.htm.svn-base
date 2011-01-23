@@ -1,0 +1,184 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Navigation dans le plan</title>
+</head>
+<body>
+
+
+<h1>Navigation dans le plan</h1>
+
+<a name="homotetie"></a>
+<h2>Navigation (homotéties)</h2>
+	<p>
+		La navigation est le coeur de l'application, qui vous  permet d'explorer un fractal. Il est normal que
+		vous y passiez la plupart du temps sur ce logiciel. La navigation inclu l'utilisation des couleurs, 
+		indispensable à la bonne visualisation des fractales et la gestion des images, de la taille de la compo.
+	</p>
+
+	<a name="pos"></a>
+	<h3>Position dans le plan</h3>
+		Pour se déplacer dans le plan sans changer d'échelle vous avez le choix entre
+		<ul>
+			<li>Maintenir la touche <span class="important">ESPACE</span>, cliquer sur un point du plan et le faire glisser avec la souris.</li>
+			<li>Par la barre d'outils, vous pouvez sélectionner le curseur de déplacement 
+				<img src="../images/interface/move.png" alt="icone de déplacement" /> et faire de même sans utiliser
+				la touche espace. </li>
+			<li>Utiliser les coordonnées du panneau d'informations du plan en modifiant les coordonnées.</li>
+		</ul>
+		<p>
+			Attention, selon le mode de calcul du moteur de rendu, le calcul d'une image n'est pas complètement
+			à refaire sauf en mode progressif :
+		</p>
+
+	<a name="scl"></a>
+	<h3>Échelle</h3>
+		<p>
+			Le changement d'échelle permet de découvrir les infractuosités d'un fractal toujours semblables ais parfois très
+			différentes d'une autre échelle. Pour modifier l'échelle vous pouvez :
+		</p>
+		<ul>
+			<li class="liExtend">Dessiner un carré de sélection avec la souris (curseur par défaut) et le logiciel se rendra à cet endroit
+				sans découper la sélection : une partie sera ajouté et le tout centré si jamais la sélection n'est pas du même ratio
+				que la taille de la composition.</li>
+			<li class="liExtend">Maintenir la touche <span class="important">CTRL</span> et utiliser la roulette de la souris. Si jamais
+				votre souris ne comporte pas de roulette, vous pouvez utiliser l'outil échelle et faire glisser le curseur.
+				<img src="../images/render/imprecision_calcul.png" style="float:right;" alt="imprécision de calcul" title="Le calcul devient impréci si l'échelle est trop grande pour être calculé en capacité double" />
+			</li>
+			<li class="liExtend">Modifier l'échelle directement dans le pannneau de navigation dans le plan.</li>
+		</ul>
+		<p>
+			Attention : <span class="important">Le zoom n'est pas infini</span>, dans certains logiciel oui car ils utilisent un 
+			algorithme de calcul plus poussé mais dans notre cas, le calcul est limité par la capacité d'un double.
+			Il faut néanmoins arriver loin pour voir une limitation, voici un exemple de ce qui peut arriver à droite
+			sur l'image prise en pleine précision.
+		</p>
+
+	<a name="rot"></a>
+	<h3>Rotation</h3>
+	à compléter	
+
+<a name="couleurs"></a>
+<h2>Utilisation des couleurs</h2>
+	<a name="crea"></a>
+	<h3>Création d'un dégradé</h3>
+		<p>
+			Pour comprendre le système de couleurs, voir partie <a href="">Compréhension des fractales</a> partie nombre
+			d'itérations. Une couleur correspond à une itération précise et le sélecteur de couleur vous permet de 
+			fluidifier les transitions entre couleurs par interpolation linéaire <i>(ou non linéaire si le système de poid
+			aux couleurs fonctionne)</i>. 
+		</p>
+		<div align="center"><img src="../images/interface/barre_couleurs.png" alt="Exemple d'un égradé de couleur" title="Ce dégradé de couleur se trouve par défaut dans le fichier de config" /></div>
+		<p>
+			Pour dessiner un dégradé, il faut ajouter des couleurs, vous avez pour action :
+		</p>
+		<ul>
+			<li><span class="important">Ajouter</span> : faîtes un simple clic sur la barre à l'emplacement où vous
+				voulez la couleurs. Par défaut, la couleur est choisit <span class="importanr">au hasard</span>.</li>
+			<li><span class="important">Déplacer</span> : glisser un curseur de couleurs en cliquant dans la zone du polygone.s</li>
+			<li><span class="important">Supprimer</span> : glisser le curseur en dehors de la compo</li>
+			<li><span class="important">Changer de couleur</span> : faîtes un simple clic dans la zone du polygone
+				de couleur.</li>
+		</ul>
+
+	<a name="biblio"></a>
+	<h3>Bibliothèque des dégradés de couleurs</h3>
+		<p>
+			Il serait dommage de redessiner votre dégradé à chaques session alors que vous avez comme possibilités :
+		</p>
+		<ul>
+			<li>
+				<span class="important">Enregistrer</span> le dégradé (bouton 
+				<img src="../images/interface/interface_enregistrer.png" alt="Save" title="Bouton enregistrer" />), 
+				une fenêtre intermédiaire vous demandera un nom (facultatif), ce dégradé se retrouvera dans la bibliothèque
+				de dégradés.</li>
+			<li>
+				<span class="important">Charger</span> un dégradé (bouton 
+				<img src="../images/interface/interface_openlibrary.png" alt="librairie" title="Bibliothèque de dégradé" />), 
+				cette fenêtre de sélection s'ouvre :<br />
+				<div align="center">
+					<img src="../images/interface/biblio_degrades.png" alt="Bibliothèque de dégradés" title="Bibliothèque de dégradés" />
+				</div>
+				Il vous suffit de cliquer sur le dégradé à charger et il est importé dans la barre principale.
+			</li>
+			<li>Inverser les couleurs (bouton <img src="../images/interface/interface_switch.png" title="Inverse les couleurs" alt="Bouton inverser" />),
+				Une option simple mais qui change du tout au tout la représentation du fractal. Pour annuler, cliquer
+				de nouveau sur le bouton. Il n'y a que deux configurations possibles.
+			</li>
+		</ul>
+
+<a name="pan"></a>
+<h2>Panneau et exportation d'images</h2>
+	<a name="size"></a>
+	<h3>Taille du panneau</h3>
+		<p>
+			Il y a plusieurs manières de perosnnaliser la taille du panneau :
+		</p>
+		<ul>
+			<li class="liExtend">
+				<p><span class="important">Le mode plein écran</span> permet de profiter de votre fractal sur toute la 
+					surface <i>(raccourcis <span class="typeWriter">CTRL+F</span> ou allez
+					dans Edition/ plein écran <img src="../images/interface/fullscreen.png" alt="Icone plein écran" />)</i>, 
+					c'est profitable si vous avez une grande puissance de calcul ou des machines en réseau pour plus de confort car la 
+					surface est plus grande.
+				</p>
+				<p>
+					Pour quitter le mode plein écran, appuyer sur <span class="important">ECHAP</span> ou la comsrcaison
+					de fermeture d'une fenêtre (généralement ALT+F4).
+				</p>
+			</li>
+			<li class="liExtend">
+				<p>
+					<span class="important">Règler au pixel prêt</span> la taille de la composition. Pour cette option, aller dans 
+					Edition/ taille du panneau <img src="../images/interface/redim.png" alt="Icone taille panneau" />
+					et entrer la taille désirée. Si la taille est plus petite que celle du cadre, elle ne sera pas réduite
+					mais si elle est plus grande, le panneau aura des barres de défilement.
+				</p>
+				<p>
+					Cette option est utile pour exporter une image avec une certaine dimension.
+				</p>
+			</li>
+			<li class="liExtend">
+				<p>
+					<span class="important">Masquer les composants</span> de la fenêtre peut vous faire gagner en espace si vous n'avez pas besoin des
+					panneaux, utiliser <a href="../pages/interface.htm#souris" target="contenu">les raccourcis clavier</a> 
+					rendra ces actions très simple à l'utilisation.	
+				</p>
+			</li>
+		</ul>
+
+	<a name="export"></a>
+	<h3>Exporter images</h3>
+		<p>
+			Pour garder une image en mémoire vous pouvez soit :
+		</p>
+		<ul>
+			<li>
+				<span class="important">Faire un copier coller</span> de l'image en faisant un 
+				<span class="typeWriter">clic droit/ copier</span> sur le 
+				panneau d'affichage, en allant dans <span class="typeWriter">Edition/ copier</span> 
+				<i>(raccourcis <span class="typeWriter">CTRL+C</span>)</i>. L'image est copiée dans le presse papier, 
+				vous pouvez la coller dans un logiciel qui accepte les flux images en entrée.
+			</li>
+			<li>
+				<span class="important">En exportant l'image</span> en format PNG, pour celà aller dans
+				<span class="typeWriter">Fichier/ exporter image</span> <img src="../images/interface/imageexport.png" alt="Icone export" />
+				raccourcis <span class="typeWriter">CTRL+E</span>. Une destination de stockage vous sera demandée ainsi
+				qu'un nom.
+			</li>
+		</ul>
+
+	<a name="partage"></a>
+	<h3>Partage des fractales par texte</h3>
+	<p>Utilisez les menu <span class="typewriter">Fichier/ Partager cette vue</span> et 
+	<span class="typewriter">Fichier/ importer vue</span><br />
+	Les données textuelles à copier/ coller sont de la même syntaxe que les vues enregistrées 
+	dans le fichier config, pour plus de renseignement allez dans la partie syntaxe.</p>
+	<p>
+		Ces informations sont destinées à être copier dans des forum de discution, par email, etc...
+		ce qui évite d'avoir toujours à montrer une image mais aussi de reprendre l'endroit où 
+		est situé le fractal et de continuer l'exploration autour de cette zone.
+	</p>
+</body>
+</html>

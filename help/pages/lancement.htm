@@ -1,0 +1,208 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Lancement le logiciel</title>
+</head>
+<body>
+	<h1>Lancement du logiciel</h1>
+	<a name="graphique"></a>
+	<h2>Graphiquement</h2>
+	Le logiciel peut se présenter sous plusieurs formes de distribution.
+	<ul>
+		<li class="liExtend">Dans une <span class="important">archive .jar</span>. C'est le plus simple pour l'utilisateur.
+		Si votre système d'exploitation est paramétré pour ouvrir une archive jar avec la machine virtuelle Java
+		alors il vous suffit d'exécuter l'archive (double-clic généralement) pour lancer le programme, la
+		console étant facultative.<br />
+		Ce procédé est simple mais il révèle l'inconvénient d'être <span class="important">imcompatible avec le 
+		rendu réseau</span> et innaproprié pour les programmeurs. Néanmoins pour une utilisation rapide, c'est 
+		un moyen très commode</li>
+		<li class="liExtend">Dans un <span class="important">Dossier</span>. Ce dossier est composé des 
+		sous dossier src/ et bin/.
+		Pour exécuter l'application. Si vous êtes:
+			<ul>
+				<li>Sous Linux/ Mac, exécutez le fichier <span class="important">bin/FractalExe.sh</span></li>
+				<li>Sous Windows, exécutez le fichier <span class="important">bin/FractalExe.bat</span></li>
+			</ul>
+		</li>
+	</ul> 
+	
+	<a name="console"></a>
+	<h2>En ligne de dommande</h2>
+	Toujours sous deux formes, pour l'archive Jar, utilisez la commande
+	<div class="codeConsole">java -jar EvoluteFractal.jar [-arument1=xxx ... -argumentN=xxx]</div>
+	Sinon pour la distribution dans un dossier utilisez :
+	<div class="codeConsole">java chemin/bin/FractalExe.sh</div>
+	ou bien sans script bash :
+	<div class="codeConsole">cd chemin/bin/<br />
+	java fract.BiomorphLauncher</div>
+	
+	<a name="args"></a>
+	<h2>Arguments</h2>
+	<p>
+	Le logiciel comporte beaucoup de paramètres pour s'adapterà vos préférences d'utilisation, notement sur 
+	l'interface graphique. Tous ces paramètres (ou options) sont stockés dans le fichier config 
+	<i>(voir la partie configuration). Le principe d'un argument est de <span class="important">surdéfinir 
+	une option</span> pour adapter le logiciel à vos différents lanceur.</i>
+	</p>
+	<p>Par exemple pour appeler le logiciel en plein écran avec une précision de calcul à 1 :</p>
+	<div class="codeConsole">java fract.BiomorphLauncher -fullScreen=on -precision=1</div>
+	<p>
+	La syntaxe globale est donc après l'appel du logiciel, ajouter un "-" suivit du nom de l'option, 
+	de = puis la valeur corresopndante (entier, on|off ou chaine de caractères entre "").
+	Voici la liste des arguments par catégories :
+	</p>
+	
+	<h3>Options de fenêtre</h3>
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th>Nom</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="tdTitre">windowStyle</td>
+			<td class="tdType">String<br />
+				<font size="2">("default" | "system" | "look&#38;feel")</font></td>
+			<td>Style de la fenêtre, vous avez le choix entre
+				<ul>
+					<li>"default" pour le style de fenêtre de Java (swing) par défaut.</li>
+					<li>"system" pour adapter à votre thème système votre fenêtre</li>
+					<li>"look&#38;feel" un thème particulier de Java.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">fullScreen</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Mettre la fenêtre à sa taille maximale (attention, différent du plein écran total!)</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">horizSize</td>
+			<td class="tdType">Entier (0-infini)</td>
+			<td>Longueur de la fenêtre (même si la fenêtre est en taille maximal, une fois 
+			restaurée, elle prendra cette taille)</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">vertSize</td>
+			<td class="tdType">Entier (0-infini)</td>
+			<td>Hauteur de la fenêtre.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">boundX</td>
+			<td class="tdType">Entier (0-infini)</td>
+			<td>Abcisse (en pixels) du point supérieur gauche de la fenêtre depuis le point supérieur gauche de l'écran.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">boundY</td>
+			<td class="tdType">Entier (0-infini)</td>
+			<td>Ordonnée (en pixels) du point supérieur gauche de la fenêtre depuis le point supérieur gauche de l'écran.</td>
+		</tr>
+	</table>
+	
+	<h3>Options sur l'interface et fractales par défaut</h3>
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th>Nom</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="tdTitre">language</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Langue générale de l'application, vous avez le choix entre
+				<ul>
+					<li>"fr" = français, langue d'origine.</li>
+					<li>"en" = anglais basique.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">dftFractal</td>
+			<td class="tdType">String (nom de fractal)</td>
+			<td>Fractal au lancement de l'application</i>.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">dftColRamp</td>
+			<td class="tdType">Entier (id)</td>
+			<td>Id du dégradé de couleur par défaut. Un nombre négatif pour celui
+			intégré au logiciel (si aucun dégradé n'existe)</i>.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">menuBar</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Affiche ou non la barre de menu. Attention, si cette barre n'est plus visible, 
+			les raccourcis clavier ne fonctionneront plus. Pour la réafficher, faîtes 
+			la conbinaison <span class="typeWritter">SHIFT+M</span></td>
+		</tr>
+		<tr>
+			<td class="tdTitre">toolBars</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Affiche ou non les barre d'outils (toutes)</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">planPan</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Affiche ou non le panneau latéral d'aide au placement dans le plan.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">equationEdit</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Affiche ou non le sélecteur d'équation.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">colorPan</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Affiche ou non le barre de sélecteur de dégradés de couleurs.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">stateBar</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Affiche ou non la barre d'état <i>(+ barre de chargement)</i>.</td>
+		</tr>
+		
+	</table>
+	
+		<h3>Options sur le moteur de rendu</h3>
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th>Nom</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="tdTitre">nbThread</td>
+			<td class="tdType">Entier (0-infini)</td>
+			<td>Nombre de threads de calculs. Ce nombre équivaut au nombre de parties calculées
+			simultannément par l'utilisateur. S'il vaut 0, le nombre de threads sera choisis 
+			automatiquement.
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">progressive</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>Activation du rendu progressif, au lieu de calculer directement pixels par pixels, 
+			l'affichage rempli l'écran de gros patés de couleurs pour devenir de plus en plus 
+			précis. Ce mode de rendu est finalement plus long à cause de ses demandes d'affichage.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">verticalRender</td>
+			<td class="tdType">Booléen (on|off)</td>
+			<td>S'il est activé, le rendu sera linéaire et calculé de la gauche vers la droite, sinon
+			le renud sera horizontale et calculé du haut vers le bas.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">precision</td>
+			<td class="tdType">Entier (1-25)</td>
+			<td>Précision du rendu. S'il est de 2, seuls 1 pixels sur 4 sera calculé. S'il est de 3, 
+			seuls un pixels sur 9, ... sur 16, 26 etc seront calculés ce qui accroit grandement
+			la vitesse d'affichage pour un rendu moins précis et moins joli.</td>
+		</tr>
+	</table>
+	
+	<h3>Options des macros</h3>
+	Tous les arguments commencant par M sont des options pour le rendu par suite d'image.
+	Ils sont expliqués dans le fichier config et trop peu maniables pour être manipulés
+	à la main (surtout les coordonnées). Mieux vaut utiliser l'interface graphique.
+</body>
+</html>

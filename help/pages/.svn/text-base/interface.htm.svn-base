@@ -1,0 +1,258 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../style/style_pages.css" type="text/css" media="screen" />
+	<title>Interface graphique</title>
+</head>
+<body>
+
+	<h1>Interface graphique</h1>
+	<a name="inter"></a>
+	<h2>Composants</h2>
+	
+		<a name="general"></a>
+		<h3>Présentation générale</h3>
+		Voici une rapide présentation de l'interface :<br />
+		<img src="../images/interface/presentation_interface.png" alt="présentation interface" /><br />
+		<p>
+			Les outils sont principalement accessible par tous les panneau dont la visibilité est 
+			modifiable par le <span class="important">menu Affichage</span>. 
+			Toutes les fonctionnalités ne se trouvent pas de le menu
+			ce qui fait qu'il vaut mieux faire le tour de l'application et de tous les boutons pour 
+			bien utiliser le logiciel par la suite.
+		</p>
+		<p>
+			Pour une visibilité personnalisée à l'ouverture, l'administration le propose dans son 
+			panneau affichage.
+		</p>
+		
+		<a name="tb"></a>
+		<h3>Les barres d'outils</h3>
+		Il existe  barre d'outils :
+		<ul>
+			<li class="liExtend">
+				<span class="important">Barre d'historique</span>. Elle enregistre les vues 
+				à chaque modification d'échelle, il est possible de naviguer entre ces vues.
+			</li>
+			<li class="liExtend">
+				<span class="important">Barre de statut calcul</span>. Bouton pause/ lecture, 
+				arrêt, actualiser le calcul. Les boutons pause et arrêt sont grisés quand il n'y 
+				a pas de calcul.
+			</li>
+			<li class="liExtend">
+				<span class="important">Barre de surseurs</span> (masquée par défaut). Curseur
+				pour éviter à avoir à se servir des raccourcis clavier. Il y a entre autres
+				un bouton pour montrer/ masque l'origine du plan complexe.
+			</li>
+			<li class="liExtend">
+				<span class="important">Barre d'itératon</span>. Simplement le nombre d'itération.
+				Si vous n'appuyez pas sur valider alors ce nombre ne sera jamais validé. 
+				L'itération automatique n'est pas parfaite mais permet de d'adapter le nombre
+				d'itération de façon logarithmique à l'échelle du complexe. Elle est inutile
+				pour le cas des biomorphes.
+			</li>
+			<li class="liExtend">
+				<span class="important">Barre de couleurs</span>. Pour choisir la couleur 
+				par défaut (quand un pixel n'est pas toruvé) et permet d'alterner deux couleurs
+				si la case alternative est cochée.
+			</li>
+			<li class="liExtend">
+				<span class="important">Barre d'itératon fixe</span>. Permet de donner un maximum
+				d'itération qui sera attribuée au dégradé de couleurs. Cet outils permet de 
+				naviguer dans le fractal en ayant toujours les mêmes couleurs au même endroit 
+				quelque soit le nombre d'itération. Si ce nombre est plus bas que le nombre
+				d'itération trouvé, les pixels de couleurs indéterminés seront en rouge !
+				Augmenter alors le nombre pour valider un nouveau créneau fixe de couleurs
+			</li>
+			<li class="liExtend">
+				<span class="important">Barre de calcul</span>. Précision du calcul et bouton 
+				valider. Si la case est cochée alors un calcul sera lancé immédiatement, sinon
+				le nouveau paramètres seront transmit mais seront utilisés seulement au 
+				prochain calcul.
+			</li>
+			
+		</ul>
+		
+		<a name="plan"></a>
+		<h3>Panneau de navigation planaire</h3>
+		<img src="../images/interface/interface_plan.png" style="float:right;" alt="screen interface" />
+		<p>
+			Donne un appercu général de la position dans le plan. Un double clic sur la carte
+			permet de remettre la vue d'origine.
+		</p>
+		<p>
+			Les coordonnées sont modifiables manuelement (touche entrée), un clic contextuel
+			donne les options pour l'utilitaire de macro.
+		</p>
+		<p>
+			L'outil de rotation est désactivé par défaut, il ne fonctionnera que si le fractal
+			est adapté pour la rotation, sinon la rotation ne fonctionnera pas.
+		</p>
+		<span class="important">Attention ! La rotation n'est clairement pas très au point
+		au niveau de la carte !</span>
+		<div style="clear:both;"></div>
+		
+		<a name="eq"></a>
+		<h3>Panneau d'équation</h3>
+		<img src="../images/interface/interface_param.png" style="float:left;" alt="screen interface" />
+		<p>
+			Ce panneau offre le choix entre les différents fractals listés dans le répertoire 
+			<span class="typewriter">fract/algo</span>. Pour charger un fractal, cliquez sur OK.
+			Il est aussi possible de supprimer la source d'un fractal par le bouton Del. Enfin
+			le bouton new ouvre l'éditeur d'équation (voir chapitre 9).
+		</p>
+		<p>
+			Sur certains fractal, un panneau d'option apparaît juste en dessous de ce panneau,
+			vous pouvez alors modifier ces constantes qui seront transmisent au fractal.
+		</p>
+		<p>
+			Il est possible d'animer la variables textuelles via l'éditeur de macro 
+			<i>(voir chapitre 10)</i>
+		</p>
+		<div style="clear:both;"></div>
+
+	<a name="clavier"></a>
+	<h2>Raccourcis clavier</h2>
+	<p>Les raccourcis clavier vous permettent d'accélerer votre travail en diminuant le nombre de clic,
+	déplacement de souris intempestifs... Apprendre certains raccourcis clavier peut
+	rendre plus agréable la navigation. La plupart des raccourcis clavier sont indiqués
+	dans le menu à côté des actions.</p>
+	
+	<h3>Raccourcis de customisation de l'interface</h3>
+	<p>
+	Permet de masquer et faire apparître des élements de l'interface.
+	</p>
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th>Raccourcis</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+A</td>
+			<td>Affiche/ masque panneau de navigation dans le plan</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+Z</td>
+			<td>Affiche/ masque panneau d'équation</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+E</td>
+			<td>Affiche/ masque panneau de dégradés de couleurs</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+R</td>
+			<td>Affiche/ masque barre de statut</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+T</td>
+			<td>Affiche/ masque barres d'outils.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+M</td>
+			<td>Affiche/ masque le menu. Attention, si le menu est invisible alors les raccourcis
+			ne marcheront plus. Il faudra la faire réapparaître avec MAJ+M une nouvelle fois.</td>
+		</tr>
+	</table>
+	
+	<h3>Raccourcis Logiciels</h3>
+	<p>
+	Ce tableau désigne plutôt l'interface logiciel et les flux.
+	</p>
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th>Raccourcis</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+N</td>
+			<td>Ouvre une nouvelle fenêtre</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">MAJ+Q</td>
+			<td>Ferme la fenêtre actuelle. Si il n'y a plus de fenêtre le programme s'arrête.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+Q</td>
+			<td>Arrête le logiciel et ferme toutes les fenêtres.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+S</td>
+			<td>Sauvegarder une vue</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+V</td>
+			<td>Ouvrir une vue.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+O</td>
+			<td>Ouvrir une vue distante (textuelle).</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+P</td>
+			<td>Exporter vue textuelle pour partage.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+H</td>
+			<td>Ouvir manuel.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+P</td>
+			<td>Ouvir préférences.</td>
+		</tr>
+	</table>
+	
+	
+	<h3>Raccourcis panneau fractal</h3>
+	<p>
+	Options sur le panneau d'affichage du fractal.
+	</p>
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th>Raccourcis</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+E</td>
+			<td>Exporter image en cours.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+C</td>
+			<td>Copier image dans le presse papier.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+G</td>
+			<td>Règler la taille du panneau de fractal au pixel près.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL+F</td>
+			<td>Visionner le fractal en plein écran. (ECHAP pour sortir)</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">ESPACE</td>
+			<td>Maintenir et cliquer pour se déplacer dans le plan.</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">SHIFT</td>
+			<td>Maintenir et cliquer pour une rotation</td>
+		</tr>
+		<tr>
+			<td class="tdTitre">CTRL</td>
+			<td>Maintenir et utiliser roulette de la souris pour un zoom.</td>
+		</tr>
+	</table>
+
+
+
+	<a name="souris"></a>
+	<h2>Raccourcis souris</h2>
+	<p>Quelques raccourcis souris :</p>
+	<ul>
+		<li>Un double clic sur la barre de statut ouvre ou ferme le panneau de couleur</li>
+		<li>Un double clic sur le fond du panneau latéral droit (même fermé) l'ouvre ou 
+		le ferme</li>
+		<li>Un double clic sur la carte de navigation replace le fractal à son échelle et 
+		position initiale</li>
+		<li>Le déplacement par la carte de navigation est infini, le curseur revient de l'autre
+		côté de l'écran une fois le bord atteint.</li>
+		<li>...</li>
+	</ul>

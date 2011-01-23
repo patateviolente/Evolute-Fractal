@@ -1,0 +1,154 @@
+
+body{
+	font-family: 'Trebuchet MS', Tahoma, Verdana, 'Times New Roman', Times, serif;
+	margin:5px;
+	padding-left:10px;
+	margin-bottom:25px;
+	color:#303A4A;
+	font-size:14px;
+}
+
+h1{
+	margin-top:10px;
+	margin-left:60px;
+	letter-spacing:6px;
+	border-bottom:1px solid grey;
+	color:black;
+}
+h2{
+	margin-top:50px;
+	margin-left:10px;
+	letter-spacing:2px;
+	border-bottom:1px solid grey;
+	color:black;
+}
+
+h3{
+	margin-top:40px;
+	margin-left:40px;
+	letter-spacing:2px;
+	border-bottom:1px solid grey;
+	color:#454545;
+}
+
+img{
+	border:0px;
+	margin:8px;
+}
+
+a{
+	color:#AB4C4C;
+}
+
+p{
+	text-align:justify;
+}
+
+p:first-letter{
+	padding-left:50px;
+}
+
+li{
+	text-align:justify;
+}
+.liExtend{
+	margin-top:8px;
+}
+
+.important{
+	color:#833F3E;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.codeConsole{
+	background-color:black;
+	color:white;
+	padding:5px 2px 5px 12px;
+	overflow:auto;
+	margin-left:20px;
+	font-family:courrier;
+	margin:3px 50px 9px 15px;
+	font-family: "Courier New" Courier monospace;
+}
+.code{
+	background-color:#EAEAEA;
+	font-family:"Courier New", Courier, monospace;
+	font-size:15px;
+}
+
+.typeWriter{
+	font-family: "Courier New" Courier monospace;
+}
+
+
+/* tableau par défaut */
+table{
+	border:1px solid black;
+	border-bottom:none;
+	margin:auto;
+	width:90%;
+	font-weight:12px;
+}
+th{
+	border-bottom:1px solid black;
+	letter-spacing:3px;
+}
+td{
+	padding:3px 5px 3px 5px;
+	border-bottom:1px solid black;
+}
+.tdTitre{
+	padding:3px 10px 3px 10px;
+	border-bottom:1px solid black;
+}
+.tdType{
+	border-right:1px solid black;
+	width:125px;
+	font-size:14px;
+	text-align:center;
+}
+
+.tdTitre{
+	font-weight:bold;
+	text-align:center;
+	vertical-align:top;
+	color:#332575;
+	border-right:1px solid grey;
+}
+.tableimg{
+	border:none;
+	width:700px;
+	height:525px;
+	text-align:center;
+}
+.tdimg{
+	border:none;
+	width:100px;
+	height:105px;
+}
+.tablejs{
+	border:none;
+	width:70px;
+	height:72px;
+}
+.tdjs{
+	border:none;
+	width:70px;
+	height:72px;
+}
+.tdcomplex{
+	background-color:#F2F2F2;
+	color:#000;
+	font-size:14px;
+}
+.tdexemples{
+	background-color:#CFD5DA;
+	font-size:14px;
+}
+.thcomplex{
+	background-color:#999;
+	color:#000;
+	width:100px;
+	font-size:14px;
+}
